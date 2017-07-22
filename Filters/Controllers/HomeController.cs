@@ -11,16 +11,19 @@ namespace Filters.Controllers
     {
         public IActionResult Index()
         {
-            
-            //if (!Request.IsHttps)
-            //{
-            //    return new StatusCodeResult(StatusCodes.Status403Forbidden);
-            //}
-            //else
-           // {
+
+            if (!Request.IsHttps)
+            {
+                return new StatusCodeResult(StatusCodes.Status403Forbidden);
+            }
+            else
+            {
+
                 return View("Message",
-                    "This is the Index action on the Home controller "+ HttpContext.Connection.RemoteIpAddress);
-            //}
+                    "This is the Index action on the Home controller " +
+                    HttpContext.Connection.RemoteIpAddress + " " +
+                    HttpContext.Connection.RemotePort);
+            }
         }
     }
 }
